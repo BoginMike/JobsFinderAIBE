@@ -24,7 +24,7 @@ async function createGridStream() {
     new mongo.MongoClient(process.env.DB_CONNECTION_STRING)
       .connect()
       .then((client) => {
-        const db = client.db("fsd");
+        const db = client.db("copierrental");
         resolve(new mongo.GridFSBucket(db, { bucketName: "uploads" }));
       })
       .catch((e) => {

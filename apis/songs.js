@@ -35,7 +35,7 @@ songRoutes.post("/", (req, res) => {
   const client = new MongoClient(process.env.DB_CONNECTION_STRING);
   client.connect().then((connection) => {
     console.log("connection made");
-    const db = connection.db("fsd");
+    const db = connection.db("copierrental");
     db.collection("songs")
       .insertOne(song)
       .then((x) => {
