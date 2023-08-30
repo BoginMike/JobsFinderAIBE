@@ -41,9 +41,10 @@ zipRoutes.post("/", (req, res) => {
       .then((x) => {
         //
         if (x.acknowledged) {
-          console.log(zip);
-          res.send("Zip Created");
+          console.log("zip");
+          res.send("zip created");
         } else {
+          console.log("zip1");
           res.send("Something went wrong");
         }
       });
