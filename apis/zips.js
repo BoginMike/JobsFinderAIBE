@@ -67,7 +67,7 @@ zipRoutes.delete("/", (req, res) => {
 
 zipRoutes.put("/", (req, res) => {
   let id = req.query.id;
-  let newSongData = req.body;
+  let newZipData = req.body;
 
   const client = new MongoClient(process.env.DB_CONNECTION_STRING);
   client.connect().then((connection) => {
