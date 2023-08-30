@@ -30,7 +30,7 @@ zipRoutes.get("/", (req, res) => {
 });
 
 zipRoutes.post("/", (req, res) => {
-  let song = req.body;
+  let zip = req.body;
 
   const client = new MongoClient(process.env.DB_CONNECTION_STRING);
   client.connect().then((connection) => {
