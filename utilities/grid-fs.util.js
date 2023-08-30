@@ -6,7 +6,7 @@ const dotenv = require("dotenv");
 dotenv.config();
 
 const storage = new GridFsStorage({
-  url: process.env.DB_CONNECTION_STRING + "/copierental",
+  url: process.env.DB_CONNECTION_STRING + "/copierrental",
   file: (req, file) => {
     return new Promise((resolve, reject) => {
       crypto.randomBytes(16, (err, buf) => {
