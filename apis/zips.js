@@ -44,7 +44,26 @@ zipRoutes.post("/", (req, res) => {
           console.log("zip");
           res.send("zip created");
         } else {
-          console.log("zip1");
+          res.send("Something went wrong");
+        }
+      });
+  });
+});
+
+zipRoutes.post("/findZip", (req, res) => {
+  let zip = req.body.zip;
+
+  const client = new MongoClient(process.env.DB_CONNECTION_STRING);
+  client.connect().then((connection) => {
+    console.log("connection made");
+    const db = connection.db("copierrental");
+    db.collection("zips")
+      .findOne(zip)
+      .then((x) => {
+        if (x.acknowledged) {
+          console.log("zip");
+          res.send(true);
+        } else {
           res.send("Something went wrong");
         }
       });
