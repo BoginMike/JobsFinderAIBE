@@ -2,17 +2,6 @@ var { Router } = require("express");
 var { MongoClient, ObjectId } = require("mongodb");
 const bwptrRoutes = Router();
 
-function middleware2(req, res, next) {
-  console.log("middleware 2 executed....");
-
-  next();
-}
-
-function attachSystemTime(req, res, next) {
-  res.setHeader("SagarServerDate", new Date());
-  next();
-}
-
 bwptrRoutes.get("/", (req, res) => {
   // database connection here
   console.log("we are in get route");
@@ -30,18 +19,17 @@ bwptrRoutes.get("/", (req, res) => {
 });
 
 bwptrRoutes.post("/", (req, res) => {
-  let song = req.body;
-
+  let ptr = req.body;
   const client = new MongoClient(process.env.DB_CONNECTION_STRING);
   client.connect().then((connection) => {
     console.log("connection made");
-    const db = connection.db("copierrentald");
-    db.collection("songs")
-      .insertOne(song)
+    const db = connection.db("copierrental");
+    db.collection("printers")
+      .insertOne(ptr)
       .then((x) => {
         //
         if (x.acknowledged) {
-          res.send("Song Created");
+          res.send("ptr Created");
         } else {
           res.send("Something went wrong");
         }
@@ -51,16 +39,16 @@ bwptrRoutes.post("/", (req, res) => {
 
 bwptrRoutes.delete("/", (req, res) => {
   let id = req.query.id; // read id as a string
-  //logic to delete song with this id from the array
+  //logic to delete ptr with this id from the array
 
   const client = new MongoClient(process.env.DB_CONNECTION_STRING);
   client.connect().then((connection) => {
     console.log("connection made");
     const db = connection.db("copierrental");
-    db.collection("songs")
+    db.collection("printers")
       .deleteOne({ _id: new ObjectId(id) })
       .then((x) => {
-        res.send("Song Deleted.");
+        res.send("ptr Deleted.");
       });
   });
 });
@@ -73,8 +61,8 @@ bwptrRoutes.put("/", (req, res) => {
   client.connect().then((connection) => {
     console.log("connection made");
     const db = connection.db("copierrental");
-    db.collection("songs")
-      .updateOne({ _id: new ObjectId(id) }, { $set: newSongData })
+    db.collection("printers")
+      .updateOne({ _id: new ObjectId(id) }, { $set: newPtrData })
       .then((x) => {
         res.send("record updated.");
       });
