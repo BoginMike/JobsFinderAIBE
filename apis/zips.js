@@ -2,17 +2,6 @@ var { Router } = require("express");
 var { MongoClient, ObjectId } = require("mongodb");
 const zipRoutes = Router();
 
-function middleware2(req, res, next) {
-  console.log("middleware 2 executed....");
-
-  next();
-}
-
-function attachSystemTime(req, res, next) {
-  res.setHeader("SagarServerDate", new Date());
-  next();
-}
-
 zipRoutes.get("/", (req, res) => {
   // database connection here
   console.log("we are in get route");
