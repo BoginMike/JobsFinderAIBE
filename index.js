@@ -3,6 +3,7 @@ var cors = require("cors");
 var mongo = require("mongodb");
 var dotenv = require("dotenv");
 var { zipRoutes } = require("./apis/zips.js");
+var { chatRoutes } = require("./apis/chats.js");
 var { bwptrRoutes } = require("./apis/bwprinters.js");
 var { clrptrRoutes } = require("./apis/clrprinters.js");
 const { getJsonFromFile } = require("./utilities/utils.js");
@@ -55,6 +56,7 @@ function authenticateBasic(req, res, next) {
 
 app.use("/users", userRoutes);
 app.use("/zips", authenticate, zipRoutes);
+app.use("/chats", authenticate, chatRoutes);
 app.use("/bwprinters", authenticate, bwptrRoutes);
 app.use("/clrprinters", authenticate, clrptrRoutes);
 app.use("/posts", authenticate, postRoutes);
