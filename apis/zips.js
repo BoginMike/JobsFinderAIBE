@@ -20,7 +20,6 @@ zipRoutes.get("/", (req, res) => {
 
 zipRoutes.post("/", (req, res) => {
   let zip = req.body;
-
   const client = new MongoClient(process.env.DB_CONNECTION_STRING);
   client.connect().then((connection) => {
     console.log("connection made");
@@ -32,6 +31,7 @@ zipRoutes.post("/", (req, res) => {
         if (x.acknowledged) {
           console.log("zip");
           res.send({ message: "zip created" });
+          res.send("zip created");
         } else {
           res.send({ message: "Something went wrong" });
         }
