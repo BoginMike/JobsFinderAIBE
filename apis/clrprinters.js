@@ -30,9 +30,9 @@ clrptrRoutes.post("/", (req, res) => {
       .then((x) => {
         //
         if (x.acknowledged) {
-          res.send("clrprinter Created");
+          res.send({ message: "clrprinter Created" });
         } else {
-          res.send("Something went wrong");
+          res.send({ message: "Something went wrong" });
         }
       });
   });
@@ -49,7 +49,7 @@ clrptrRoutes.delete("/", (req, res) => {
     db.collection("clrprinters")
       .deleteOne({ _id: new ObjectId(id) })
       .then((x) => {
-        res.send("clrprinter Deleted.");
+        res.send({ message: "clrprinter Deleted." });
       });
   });
 });
@@ -65,7 +65,7 @@ clrptrRoutes.put("/", (req, res) => {
     db.collection("clrprinters")
       .updateOne({ _id: new ObjectId(id) }, { $set: newSongData })
       .then((x) => {
-        res.send("record updated.");
+        res.send({ message: "record updated." });
       });
   });
 });

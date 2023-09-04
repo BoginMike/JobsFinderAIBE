@@ -29,9 +29,9 @@ bwptrRoutes.post("/", (req, res) => {
       .then((x) => {
         //
         if (x.acknowledged) {
-          res.send("ptr Created");
+          res.send({ message: "ptr Created" });
         } else {
-          res.send("Something went wrong");
+          res.send({ message: "Something went wrong" });
         }
       });
   });
@@ -48,7 +48,7 @@ bwptrRoutes.delete("/", (req, res) => {
     db.collection("printers")
       .deleteOne({ _id: new ObjectId(id) })
       .then((x) => {
-        res.send("ptr Deleted.");
+        res.send({ message: "ptr Deleted." });
       });
   });
 });
@@ -64,7 +64,7 @@ bwptrRoutes.put("/", (req, res) => {
     db.collection("printers")
       .updateOne({ _id: new ObjectId(id) }, { $set: newPtrData })
       .then((x) => {
-        res.send("record updated.");
+        res.send({ message: "record updated." });
       });
   });
 });
