@@ -88,7 +88,7 @@ userRoutes.get("/generate-token", (req, res) => {
           let token = jwt.sign(
             {
               username: user.username,
-              profilePicture: user.profilePicture,
+              // profilePicture: user.profilePicture,
             },
             process.env.SECRET_KEY,
             {
