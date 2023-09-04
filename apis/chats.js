@@ -30,9 +30,9 @@ chatRoutes.post("/", (req, res) => {
         //
         if (x.acknowledged) {
           console.log("chat");
-          res.send("chat created");
+          res.send({ message: "chat created" });
         } else {
-          res.send("Something went wrong");
+          res.send({ message: "Something went wrong" });
         }
       });
   });
@@ -52,7 +52,7 @@ chatRoutes.post("/findChat", (req, res) => {
           console.log("chat");
           res.send(true);
         } else {
-          res.send("Something went wrong");
+          res.send({ message: "Something went wrong" });
         }
       });
   });
@@ -69,7 +69,7 @@ chatRoutes.delete("/", (req, res) => {
     db.collection("chats")
       .deleteOne({ _id: new ObjectId(id) })
       .then((x) => {
-        res.send("Chat Deleted.");
+        res.send({ message: "Chat Deleted." });
       });
   });
 });
@@ -85,7 +85,7 @@ chatRoutes.put("/", (req, res) => {
     db.collection("chats")
       .updateOne({ _id: new ObjectId(id) }, { $set: newZipData })
       .then((x) => {
-        res.send("record updated.");
+        res.send({ message: "record updated." });
       });
   });
 });

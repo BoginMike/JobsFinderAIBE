@@ -33,7 +33,7 @@ zipRoutes.post("/", (req, res) => {
           console.log("zip");
           res.send({ message: "zip created" });
         } else {
-          res.send("Something went wrong");
+          res.send({ message: "Something went wrong" });
         }
       });
   });
@@ -53,7 +53,7 @@ zipRoutes.post("/findZip", (req, res) => {
           console.log("zip");
           res.send(true);
         } else {
-          res.send("Something went wrong");
+          res.send({ message: "Something went wrong" });
         }
       });
   });
@@ -70,7 +70,7 @@ zipRoutes.delete("/", (req, res) => {
     db.collection("zips")
       .deleteOne({ _id: new ObjectId(id) })
       .then((x) => {
-        res.send("Zip Deleted.");
+        res.send({ message: "Zip Deleted." });
       });
   });
 });
@@ -86,7 +86,7 @@ zipRoutes.put("/", (req, res) => {
     db.collection("zips")
       .updateOne({ _id: new ObjectId(id) }, { $set: newZipData })
       .then((x) => {
-        res.send("record updated.");
+        res.send({ message: "record updated." });
       });
   });
 });
