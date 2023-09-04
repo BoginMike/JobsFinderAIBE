@@ -7,9 +7,9 @@ function authenticate(req, res, next) {
       jwt.verify(token, process.env.SECRET_KEY);
       let decoded = jwt.decode(token);
       req.headers["userdata"] = decoded;
+      console.log("token no error");
       next();
     } catch (error) {
-      console.log("token error");
       res.json({ message: "Unauthorized Request", status: false });
       return;
     }
