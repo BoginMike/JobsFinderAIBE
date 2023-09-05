@@ -6,3 +6,4 @@ The link to the backend is https://copierbe.onrender.com
 The free version seems to spin down after a time so if the site is not working right please refresh the render link.
 
 Please click on the About link on the website to read about the history of this project.
+Note: the main code to the backend is in the index.js file because server.js was in use for the initial socketIO chat attempt.
