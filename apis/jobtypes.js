@@ -40,7 +40,7 @@ jobRoutes.post("/", (req, res) => {
 });
 
 jobRoutes.post("/jobtypes", (req, res) => {
-  let job = req.body.job;
+  let job = req.body;
 
   const client = new MongoClient(process.env.DB_CONNECTION_STRING);
   client.connect().then((connection) => {
