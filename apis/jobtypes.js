@@ -18,7 +18,7 @@ jobRoutes.get("/", (req, res) => {
   });
 });
 
-jobRoutes.post("/", (req, res) => {
+jobRoutes.post("/jobtypes", (req, res) => {
   let job = req.body;
   const client = new MongoClient(process.env.DB_CONNECTION_STRING);
   client.connect().then((connection) => {
@@ -39,8 +39,8 @@ jobRoutes.post("/", (req, res) => {
   });
 });
 
-jobRoutes.post("/jobtypes", (req, res) => {
-  let job = req.body;
+jobRoutes.post("/findjob", (req, res) => {
+  let job = req.body.job;
 
   const client = new MongoClient(process.env.DB_CONNECTION_STRING);
   client.connect().then((connection) => {
