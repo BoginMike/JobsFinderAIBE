@@ -8,7 +8,7 @@ jobRoutes.get("/", (req, res) => {
   const client = new MongoClient(process.env.DB_CONNECTION_STRING);
   client.connect().then((connection) => {
     console.log("connection made");
-    const db = connection.db("jobsfindera1");
+    const db = connection.db("jobfindera1");
     db.collection("jobtypes")
       .find()
       .toArray()
@@ -23,7 +23,7 @@ jobRoutes.post("/", (req, res) => {
   const client = new MongoClient(process.env.DB_CONNECTION_STRING);
   client.connect().then((connection) => {
     console.log("connection made");
-    const db = connection.db("jobsfindera1");
+    const db = connection.db("jobfindera1");
     db.collection("jobtypes")
       .insertOne(job)
       .then((x) => {
@@ -45,7 +45,7 @@ jobRoutes.post("/jobtypes", (req, res) => {
   const client = new MongoClient(process.env.DB_CONNECTION_STRING);
   client.connect().then((connection) => {
     console.log("connection made");
-    const db = connection.db("jobsfindera1");
+    const db = connection.db("jobfindera1");
     db.collection("jobtypes")
       .findOne(job)
       .then((x) => {
@@ -66,7 +66,7 @@ jobRoutes.delete("/", (req, res) => {
   const client = new MongoClient(process.env.DB_CONNECTION_STRING);
   client.connect().then((connection) => {
     console.log("connection made");
-    const db = connection.db("jobsfindera1");
+    const db = connection.db("jobfindera1");
     db.collection("jobtypes")
       .deleteOne({ _id: new ObjectId(id) })
       .then((x) => {
@@ -82,7 +82,7 @@ jobRoutes.put("/", (req, res) => {
   const client = new MongoClient(process.env.DB_CONNECTION_STRING);
   client.connect().then((connection) => {
     console.log("connection made");
-    const db = connection.db("jobsfindera1");
+    const db = connection.db("jobfindera1");
     db.collection("jobtypes")
       .updateOne({ _id: new ObjectId(id) }, { $set: newJobData })
       .then((x) => {
