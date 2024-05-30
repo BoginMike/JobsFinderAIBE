@@ -1,4 +1,4 @@
-# CopierRentalBE
+# JobFinderAIBE
 The same commands in the front end ReadME are what I used before deploying the backend. Render took care of building the project 
 from this github repository. 
 The link to the frontend is https://copier-rental-fe.vercel.app/
