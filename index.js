@@ -3,6 +3,7 @@ var cors = require("cors");
 var mongo = require("mongodb");
 var dotenv = require("dotenv");
 var { zipRoutes } = require("./apis/zips.js");
+var { jobZipRoutes } = require("./apis/zips2.js");
 var { jobRoutes } = require("./apis/jobtypes.js");
 var { chatRoutes } = require("./apis/chats.js");
 var { bwptrRoutes } = require("./apis/bwprinters.js");
@@ -57,6 +58,7 @@ function authenticateBasic(req, res, next) {
 
 app.use("/users", userRoutes);
 app.use("/zips", authenticate, zipRoutes);
+app.use("/zips2", authenticate, jobZipRoutes);
 app.use("/jobtypes", authenticate, jobRoutes);
 app.use("/chats", authenticate, chatRoutes);
 app.use("/bwprinters", authenticate, bwptrRoutes);
