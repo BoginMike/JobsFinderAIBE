@@ -91,4 +91,4 @@ jobRoutes.put("/", (req, res) => {
   });
 });
 
-module.exports = { jobtypesRoutes };
+module.exports = { jobRoutes };
