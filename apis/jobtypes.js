@@ -21,7 +21,7 @@ jobRoutes.get("/", (req, res) => {
 jobRoutes.post("/jobtypes", (req, res) => {
   let job = req.body;
   const client = new MongoClient(process.env.DB_CONNECTION_STRING);
-  res.header{"Allow-Control-Allow-Origin", "*");
+  res.header("Allow-Control-Allow-Origin", "*");
   client.connect().then((connection) => {
     console.log("connection made");
     const db = connection.db("jobfindera1");
