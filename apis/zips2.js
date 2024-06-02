@@ -1,8 +1,8 @@
 var { Router } = require("express");
 var { MongoClient, ObjectId } = require("mongodb");
-const zipRoutes = Router();
+const jobZipRoutes = Router();
 
-zipRoutes.get("/", (req, res) => {
+jobZipRoutes.get("/", (req, res) => {
   // database connection here
   console.log("we are in get route");
   const client = new MongoClient(process.env.DB_CONNECTION_STRING);
@@ -39,7 +39,7 @@ jobZipRoutes.post("/", (req, res) => {
   });
 });
 
-zipRoutes.post("/findZip", (req, res) => {
+jobZipRoutes.post("/findZip", (req, res) => {
   let zip = req.body.zip;
 
   const client = new MongoClient(process.env.DB_CONNECTION_STRING);
@@ -59,7 +59,7 @@ zipRoutes.post("/findZip", (req, res) => {
   });
 });
 
-zipRoutes.delete("/", (req, res) => {
+jobZipRoutes.delete("/", (req, res) => {
   let id = req.query.id; // read id as a string
   //logic to delete song with this id from the array
 
@@ -75,7 +75,7 @@ zipRoutes.delete("/", (req, res) => {
   });
 });
 
-zipRoutes.put("/", (req, res) => {
+jobZipRoutes.put("/", (req, res) => {
   let id = req.query.id;
   let newZipData = req.body;
 
