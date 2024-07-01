@@ -96,7 +96,7 @@ app.get("/", (req, res) => {
 createGridStream().then((x) => {
   bucket = x;
 
-  app.listen(3001, () => {
+  app.listen(3000, () => {
     console.log("app started....");
   });
 });
