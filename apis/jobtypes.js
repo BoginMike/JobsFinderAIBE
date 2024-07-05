@@ -18,7 +18,7 @@ jobRoutes.get("/", (req, res) => {
   });
 });
 
-jobRoutes.post("/jobtypes", (req, res) => {
+jobRoutes.post("/", (req, res) => {
   let job = req.body;
   const client = new MongoClient(process.env.DB_CONNECTION_STRING);
   // res.header("Allow-Control-Allow-Origin", "*");
