@@ -11,7 +11,7 @@ userRoutes.post("/", (req, res) => {
   const client = new MongoClient(process.env.DB_CONNECTION_STRING);
   client.connect().then((connection) => {
     console.log("connection made");
-    const db = connection.db("copierrental");
+    const db = connection.db("jobfinderai");
     db.collection("users")
       .insertOne(userObj)
       .then((x) => {
